@@ -1,0 +1,17 @@
+*.log
+*.swo
+*.swd
+*.swp
+*.sh
+*.cts
+*.blk
+*/**/*.o
+
+!*.gitignore
+
+Makefile
+CMakeCache.txt
+*.cmake
+CMakeFiles
+install_manifest.txt
+build
