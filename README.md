@@ -20,3 +20,9 @@
     
 ### Parent Repository
   - https://github.com/The-OpenROAD-Project/TritonCTS
+
+### License
+* BSD-3-clause License [[Link]](LICENSE)
+
+### Author
+* Mingyu Woo
