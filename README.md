@@ -16,7 +16,7 @@
     $ sudo make install    // or make install if you specified -DCMAKE_INSTALL_PREFIX
 
 ### How To Execute
-    $ ./lefdef2cts -lef tech.lef -lef macro.lef [-lef ... ] -def input.def -cts design.cts -blk -design.blk
+    $ ./lefdef2cts -lef tech.lef -lef macro.lef [-lef ... ] -def input.def -cpin <clockPinName> -cts design.cts -blk -design.blk
     
 ### Parent Repository
   - https://github.com/The-OpenROAD-Project/TritonCTS
