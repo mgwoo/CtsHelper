@@ -83,7 +83,7 @@
 #include "lefdefIO.h"
 
 using namespace std;
-using Circuit::Circuit;
+using Replace::Circuit;
 
 //static char defaultOut[128];
 //static int printing = 0;     // Printing the output.
@@ -1803,19 +1803,19 @@ void printWarning(const char *str)
 // Print Function
 //
 
-void Circuit::Circuit::DumpLefVersion() {
+void Replace::Circuit::DumpLefVersion() {
     CIRCUIT_FPRINTF(fout, "VERSION %g ;\n", lefVersion);
 }
 
-void Circuit::Circuit::DumpLefBusBitChar() {
+void Replace::Circuit::DumpLefBusBitChar() {
     CIRCUIT_FPRINTF(fout, "BUSBITCHARS \"%s\" ;\n", lefBusBitChar.c_str());
 }
 
-void Circuit::Circuit::DumpLefDivider() {
+void Replace::Circuit::DumpLefDivider() {
     CIRCUIT_FPRINTF(fout, "DIVIDERCHAR \"%s\" ;\n\n", lefDivider.c_str());
 }
 
-void Circuit::Circuit::DumpLefUnit() {
+void Replace::Circuit::DumpLefUnit() {
 //    lefiUnits* unit = &lefUnit;
     CIRCUIT_FPRINTF(fout, "UNITS\n");
     if (lefUnit.lefiUnits::hasDatabase())
@@ -1838,13 +1838,13 @@ void Circuit::Circuit::DumpLefUnit() {
     CIRCUIT_FPRINTF(fout, "END UNITS\n\n");
 }
 
-void Circuit::Circuit::DumpLefManufacturingGrid() {
+void Replace::Circuit::DumpLefManufacturingGrid() {
     if(lefManufacturingGrid != DBL_MIN) {
         CIRCUIT_FPRINTF(fout, "MANUFACTURINGGRID %g ;\n\n", lefManufacturingGrid);
     }
 }
 
-void Circuit::Circuit::DumpLefLayer() {
+void Replace::Circuit::DumpLefLayer() {
     if( lefLayerStor.size() == 0 ) {
         return;
     }
@@ -2437,7 +2437,7 @@ void Circuit::Circuit::DumpLefLayer() {
     lefrSetCaseSensitivity(1);
 }
 
-void Circuit::Circuit::DumpLefSite(){
+void Replace::Circuit::DumpLefSite(){
     if( lefSiteStor.size() == 0 ){
         return;
     }
@@ -2488,7 +2488,7 @@ void Circuit::Circuit::DumpLefSite(){
     }
 }
 
-void Circuit::Circuit::DumpLefVia() {
+void Replace::Circuit::DumpLefVia() {
     if( lefViaStor.size() == 0 ) {
         return ;
     }
@@ -2498,7 +2498,7 @@ void Circuit::Circuit::DumpLefVia() {
     }
 }
 
-void Circuit::Circuit::DumpLefMacro() {
+void Replace::Circuit::DumpLefMacro() {
     lefiSitePattern* pattern;
     int              propNum, i, hasPrtSym = 0;
 
@@ -2627,12 +2627,12 @@ void Circuit::Circuit::DumpLefMacro() {
     }
 }
 
-void Circuit::Circuit::DumpLefDone() {
+void Replace::Circuit::DumpLefDone() {
     CIRCUIT_FPRINTF(fout, "END LIBRARY\n");
 }
 
 // below is helper function
-void Circuit::Circuit::DumpLefObs( lefiObstruction* obs ) {
+void Replace::Circuit::DumpLefObs( lefiObstruction* obs ) {
     CIRCUIT_FPRINTF(fout, "  OBS\n");
     lefiGeometries* geometry = obs->lefiObstruction::geometries();
     prtGeometry(geometry);
@@ -2640,7 +2640,7 @@ void Circuit::Circuit::DumpLefObs( lefiObstruction* obs ) {
 }
 
 
-void Circuit::Circuit::DumpLefPin(lefiPin* pin) {
+void Replace::Circuit::DumpLefPin(lefiPin* pin) {
     int                  numPorts, i, j;
     lefiGeometries*      geometry;
     lefiPinAntennaModel* aModel;
@@ -2902,7 +2902,7 @@ void Circuit::Circuit::DumpLefPin(lefiPin* pin) {
 
 
 
-void Circuit::Circuit::ParseLef(vector<string>& lefStor) {
+void Replace::Circuit::ParseLef(vector<string>& lefStor) {
 //    char* outFile;
 
     FILE* f;
@@ -3170,7 +3170,7 @@ void Circuit::Circuit::ParseLef(vector<string>& lefStor) {
 //    lefrClear();    
 
 }
-void Circuit::Circuit::WriteLef(FILE* _fout) {
+void Replace::Circuit::WriteLef(FILE* _fout) {
     fout = _fout;
 //    fout = stdout;
 

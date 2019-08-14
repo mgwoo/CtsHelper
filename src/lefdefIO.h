@@ -43,7 +43,7 @@
 #ifndef __circuit__
 #define __circuit__ 0
 
-#define CIRCUIT_NAMESPACE_OPEN namespace Circuit{
+#define CIRCUIT_NAMESPACE_OPEN namespace Replace{
 #define CIRCUIT_NAMESPACE_CLOSE }
 
 #ifndef CIRCUIT_FPRINTF
@@ -265,11 +265,11 @@ void ReadPlLefDef(const char* fileName);
 
 void WriteDef(const char* defOutput);
 
-void GenerateModuleTerminal(Circuit::Circuit& __ckt);
-void GenerateRow(Circuit::Circuit& __ckt);
+void GenerateModuleTerminal(Replace::Circuit& __ckt);
+void GenerateRow(Replace::Circuit& __ckt);
 
-void GenerateNetDefOnly(Circuit::Circuit& __ckt);
-void GenerateNetDefVerilog(Circuit::Circuit& __ckt);
+void GenerateNetDefOnly(Replace::Circuit& __ckt);
+void GenerateNetDefVerilog(Replace::Circuit& __ckt);
 
 // custom scale down parameter setting during the stage
 void SetUnitY(float  _unitY);
