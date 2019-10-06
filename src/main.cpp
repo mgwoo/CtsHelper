@@ -40,6 +40,16 @@
 #define compileDate __DATE__
 #define compileTime __TIME__
 
+using std::cout;
+using std::endl;
+using std::string;
+using std::vector;
+using std::pair;
+using std::unordered_map;
+    
+using CtsHelper::Circuit;
+using CtsHelper::NetInfo;
+
 vector<string> lefStor;
 unordered_map<string, int> clockPinMap;
 string defStr;
@@ -52,8 +62,8 @@ using std::string;
 
 bool argument(int argc, char *argv[]);
 void PrintHelp();
-void WriteCts(Replace::Circuit& ckt, const string& ctsStr);
-void WriteBlk(Replace::Circuit& ckt, const string& blkStr);
+void WriteCts(CtsHelper::Circuit& ckt, const string& ctsStr);
+void WriteBlk(CtsHelper::Circuit& ckt, const string& blkStr);
 
 int main(int argc, char *argv[]) {
 
@@ -63,7 +73,7 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  Replace::Circuit ckt;
+  CtsHelper::Circuit ckt;
   ckt.Init( lefStor, defStr );
 
   float cellHeight = FLT_MIN;
@@ -99,7 +109,7 @@ void PrintHelp() {
   cout << "./lefdef2macro -lef <lef1> -lef <lef2> -def <def> -cts <cts> -blk <blk>" << endl;
 }
 
-void WriteCts( Replace::Circuit& ckt, const string& ctsStr ) {
+void WriteCts( CtsHelper::Circuit& ckt, const string& ctsStr ) {
   ofstream ctsFile(ctsStr);
   if( !ctsFile.good() ) {
     cout << "** ERROR : Cannot Open CTS file to write : " << ctsStr << endl;
@@ -161,7 +171,7 @@ void WriteCts( Replace::Circuit& ckt, const string& ctsStr ) {
   feed.clear();
 }
 
-void WriteBlk( Replace::Circuit& ckt, const string& blkStr) {
+void WriteBlk( CtsHelper::Circuit& ckt, const string& blkStr) {
   ofstream blkFile(blkStr);
   if( !blkFile.good() ) {
     cout << "** ERROR : Cannot Open CTS file to write : " << ctsStr << endl;

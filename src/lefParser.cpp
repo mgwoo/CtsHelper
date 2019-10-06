@@ -83,7 +83,7 @@
 #include "lefdefIO.h"
 
 using namespace std;
-using Replace::Circuit;
+using CtsHelper::Circuit;
 
 //static char defaultOut[128];
 //static int printing = 0;     // Printing the output.
@@ -1803,19 +1803,19 @@ void printWarning(const char *str)
 // Print Function
 //
 
-void Replace::Circuit::DumpLefVersion() {
+void CtsHelper::Circuit::DumpLefVersion() {
     CIRCUIT_FPRINTF(fout, "VERSION %g ;\n", lefVersion);
 }
 
-void Replace::Circuit::DumpLefBusBitChar() {
+void CtsHelper::Circuit::DumpLefBusBitChar() {
     CIRCUIT_FPRINTF(fout, "BUSBITCHARS \"%s\" ;\n", lefBusBitChar.c_str());
 }
 
-void Replace::Circuit::DumpLefDivider() {
+void CtsHelper::Circuit::DumpLefDivider() {
     CIRCUIT_FPRINTF(fout, "DIVIDERCHAR \"%s\" ;\n\n", lefDivider.c_str());
 }
 
-void Replace::Circuit::DumpLefUnit() {
+void CtsHelper::Circuit::DumpLefUnit() {
 //    lefiUnits* unit = &lefUnit;
     CIRCUIT_FPRINTF(fout, "UNITS\n");
     if (lefUnit.lefiUnits::hasDatabase())
@@ -1838,13 +1838,13 @@ void Replace::Circuit::DumpLefUnit() {
     CIRCUIT_FPRINTF(fout, "END UNITS\n\n");
 }
 
-void Replace::Circuit::DumpLefManufacturingGrid() {
+void CtsHelper::Circuit::DumpLefManufacturingGrid() {
     if(lefManufacturingGrid != DBL_MIN) {
         CIRCUIT_FPRINTF(fout, "MANUFACTURINGGRID %g ;\n\n", lefManufacturingGrid);
     }
 }
 
-void Replace::Circuit::DumpLefLayer() {
+void CtsHelper::Circuit::DumpLefLayer() {
     if( lefLayerStor.size() == 0 ) {
         return;
     }
@@ -2437,7 +2437,7 @@ void Replace::Circuit::DumpLefLayer() {
     lefrSetCaseSensitivity(1);
 }
 
-void Replace::Circuit::DumpLefSite(){
+void CtsHelper::Circuit::DumpLefSite(){
     if( lefSiteStor.size() == 0 ){
         return;
     }
@@ -2488,7 +2488,7 @@ void Replace::Circuit::DumpLefSite(){
     }
 }
 
-void Replace::Circuit::DumpLefVia() {
+void CtsHelper::Circuit::DumpLefVia() {
     if( lefViaStor.size() == 0 ) {
         return ;
     }
@@ -2498,7 +2498,7 @@ void Replace::Circuit::DumpLefVia() {
     }
 }
 
-void Replace::Circuit::DumpLefMacro() {
+void CtsHelper::Circuit::DumpLefMacro() {
     lefiSitePattern* pattern;
     int              propNum, i, hasPrtSym = 0;
 
@@ -2627,12 +2627,12 @@ void Replace::Circuit::DumpLefMacro() {
     }
 }
 
-void Replace::Circuit::DumpLefDone() {
+void CtsHelper::Circuit::DumpLefDone() {
     CIRCUIT_FPRINTF(fout, "END LIBRARY\n");
 }
 
 // below is helper function
-void Replace::Circuit::DumpLefObs( lefiObstruction* obs ) {
+void CtsHelper::Circuit::DumpLefObs( lefiObstruction* obs ) {
     CIRCUIT_FPRINTF(fout, "  OBS\n");
     lefiGeometries* geometry = obs->lefiObstruction::geometries();
     prtGeometry(geometry);
@@ -2640,7 +2640,7 @@ void Replace::Circuit::DumpLefObs( lefiObstruction* obs ) {
 }
 
 
-void Replace::Circuit::DumpLefPin(lefiPin* pin) {
+void CtsHelper::Circuit::DumpLefPin(lefiPin* pin) {
     int                  numPorts, i, j;
     lefiGeometries*      geometry;
     lefiPinAntennaModel* aModel;
@@ -2902,7 +2902,7 @@ void Replace::Circuit::DumpLefPin(lefiPin* pin) {
 
 
 
-void Replace::Circuit::ParseLef(vector<string>& lefStor) {
+void CtsHelper::Circuit::ParseLef(vector<string>& lefStor) {
 //    char* outFile;
 
     FILE* f;
@@ -3170,7 +3170,7 @@ void Replace::Circuit::ParseLef(vector<string>& lefStor) {
 //    lefrClear();    
 
 }
-void Replace::Circuit::WriteLef(FILE* _fout) {
+void CtsHelper::Circuit::WriteLef(FILE* _fout) {
     fout = _fout;
 //    fout = stdout;
 

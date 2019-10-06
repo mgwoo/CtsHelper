@@ -36,6 +36,7 @@ set (CTSHELP_SRC
   src/main.cpp
   src/lefParser.cpp
   src/defParser.cpp
+  src/lefdefIO.cpp
   )
 
 
